@@ -7,6 +7,7 @@ export default {
   email: "kaine@copybykaine.com",
   phone: "+447598455525",
   whatsapp: "https://wa.me/447598455525",
+  facebook: "https://www.facebook.com/copybykaine",
   booking: "https://api.leadconnectorhq.com/widget/booking/tKLCP9oAZbRfNljyJAQQ",
   survey: "https://api.leadconnectorhq.com/widget/survey/0tgoIQWsVPhWBl4MhB8l",
   buildYear: 2026,
