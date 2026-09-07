@@ -557,6 +557,13 @@ section { padding: 72px 0; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
+/* ---------- Subtle scroll reveal (only with JS, so content always shows) ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
 /* ============================================================
    SUB-PAGE COMPONENTS (services, industries, case studies, guides)
    Reuses the homepage brand tokens and components above.

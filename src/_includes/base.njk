@@ -35,7 +35,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  {% if ghlEmbed %}<link rel="preconnect" href="https://api.leadconnectorhq.com"><link rel="preconnect" href="https://link.msgsndr.com">{% endif %}
 
   <link rel="stylesheet" href="/assets/site.css">
 
@@ -127,7 +128,29 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
   })();
+
+  // Subtle scroll reveal. Marks <html> as js so CSS only hides pre-reveal when
+  // JS runs (content always visible if JS fails). Above-fold elements show
+  // instantly; only below-fold ones animate. Failsafe reveals all after 1.5s.
+  (function() {
+    document.documentElement.classList.add('js');
+    var sel = '.h-section, .subhero h1, .process-head, .step, .inc-item, .dstep, .who-card, .review-card, .callout, .related a, .stat, .map-embed';
+    var els = [].slice.call(document.querySelectorAll(sel));
+    if (!els.length) return;
+    var supported = 'IntersectionObserver' in window;
+    var io = supported ? new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }) : null;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach(function(el) {
+      el.classList.add('reveal');
+      if (!supported || el.getBoundingClientRect().top < vh * 0.95) { el.classList.add('in'); }
+      else { io.observe(el); }
+    });
+    // Nothing may ever stay hidden: force-reveal any stragglers.
+    setTimeout(function() { els.forEach(function(el) { el.classList.add('in'); }); }, 1500);
+  })();
 </script>
-{% if ghlEmbed %}<script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>{% endif %}
+{% if ghlEmbed %}<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>{% endif %}
 </body>
 </html>
