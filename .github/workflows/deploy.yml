@@ -25,6 +25,12 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npx @11ty/eleventy
+      # Custom domain only on the production repo, so the user-site repo
+      # (kaine2005.github.io) never claims copybykaine.com and never redirects
+      # the client project sites.
+      - name: Set custom domain (production repo only)
+        if: endsWith(github.repository, '/copybykaine')
+        run: echo 'copybykaine.com' > _site/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
