@@ -117,7 +117,7 @@ ghlEmbed: true
     <div class="results-track-outer">
       <div class="results-track" id="resultsTrack">
         <a class="result-card" href="/industries/fitted-wardrobes/">
-          <video class="result-media" loop muted playsinline preload="none" poster="/clips/EBW_Showcase.jpg" aria-label="Bespoke fitted wardrobe installation, Edinburgh client showcase">
+          <video class="result-media" loop muted playsinline preload="metadata" poster="/clips/EBW_Showcase.jpg" aria-label="Bespoke fitted wardrobe installation, Edinburgh client showcase">
             <source src="/clips/EBW_Showcase.mp4" type="video/mp4">
           </video>
           <div class="result-overlay">
@@ -126,7 +126,7 @@ ghlEmbed: true
           </div>
         </a>
         <a class="result-card" href="/industries/media-walls/">
-          <video class="result-media" loop muted playsinline preload="none" poster="/clips/PMW_Showcase.jpg" aria-label="Media wall installation, Johnstone Renfrewshire client showcase">
+          <video class="result-media" loop muted playsinline preload="metadata" poster="/clips/PMW_Showcase.jpg" aria-label="Media wall installation, Johnstone Renfrewshire client showcase">
             <source src="/clips/PMW_Showcase.mp4" type="video/mp4">
           </video>
           <div class="result-overlay">
@@ -135,7 +135,7 @@ ghlEmbed: true
           </div>
         </a>
         <a class="result-card" href="/industries/windows-doors/">
-          <video class="result-media" loop muted playsinline preload="none" poster="/clips/MGUPVC_Showcase.jpg" aria-label="Window and door installation, Bellshill client showcase">
+          <video class="result-media" loop muted playsinline preload="metadata" poster="/clips/MGUPVC_Showcase.jpg" aria-label="Window and door installation, Bellshill client showcase">
             <source src="/clips/MGUPVC_Showcase.mp4" type="video/mp4">
           </video>
           <div class="result-overlay">
@@ -144,7 +144,7 @@ ghlEmbed: true
           </div>
         </a>
         <a class="result-card" href="/industries/exterior-cleaning/">
-          <video class="result-media" loop muted playsinline preload="none" poster="/clips/Wusch_Showcase.jpg" aria-label="Exterior cleaning and pressure washing, Scotland client showcase">
+          <video class="result-media" loop muted playsinline preload="metadata" poster="/clips/Wusch_Showcase.jpg" aria-label="Exterior cleaning and pressure washing, Scotland client showcase">
             <source src="/clips/Wusch_Showcase.mp4" type="video/mp4">
           </video>
           <div class="result-overlay">
@@ -153,7 +153,7 @@ ghlEmbed: true
           </div>
         </a>
         <a class="result-card" href="/industries/garage-conversions/">
-          <video class="result-media" loop muted playsinline preload="none" poster="/clips/PGC_Showcase.jpg" aria-label="Garage conversion, West Lothian and Glasgow client showcase">
+          <video class="result-media" loop muted playsinline preload="metadata" poster="/clips/PGC_Showcase.jpg" aria-label="Garage conversion, West Lothian and Glasgow client showcase">
             <source src="/clips/PGC_Showcase.mp4" type="video/mp4">
           </video>
           <div class="result-overlay">
@@ -430,7 +430,7 @@ ghlEmbed: true
             v.pause();
           }
         });
-      }, { root: outer, rootMargin: '0px 200px', threshold: 0.35 });
+      }, { root: outer, rootMargin: '0px 600px', threshold: 0.2 });
       videos.forEach(function(v) { io.observe(v); });
     } else {
       videos.forEach(function(v) { var p = v.play(); if (p && p.catch) p.catch(function(){}); });
