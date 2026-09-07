@@ -10,10 +10,11 @@ permissions:
   pages: write
   id-token: write
 
-# Only one deploy at a time; newer pushes cancel in-progress ones.
+# Only one deploy at a time. Queue (don't cancel) so a new push can't clash with
+# a Pages deployment that's still finalising ("in progress deployment" error).
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
