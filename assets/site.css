@@ -401,11 +401,28 @@ section { padding: 72px 0; }
 .star-row { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 40px; }
 .star-row .star { color: var(--amber); font-size: 20px; }
 .star-count { color: var(--muted); font-size: 14px; margin-left: 8px; }
-.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+/* Horizontal carousel: ~3 cards on desktop, ~1 (with a peek) on mobile, scroll for the rest */
+.reviews-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 2px;
+  padding: 2px 2px 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.reviews-grid::-webkit-scrollbar { height: 8px; }
+.reviews-grid::-webkit-scrollbar-track { background: transparent; }
+.reviews-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+.reviews-grid::-webkit-scrollbar-thumb:hover { background: var(--amber); }
 .review-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; padding: 26px 22px;
   display: flex; flex-direction: column;
+  flex: 0 0 clamp(280px, 32%, 360px);
+  scroll-snap-align: start;
 }
 .review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
 .review-stars span { color: var(--amber); font-size: 15px; }
@@ -526,7 +543,7 @@ section { padding: 72px 0; }
 @media (max-width: 940px) {
   .steps { grid-template-columns: repeat(2, 1fr); }
   .included-grid { grid-template-columns: repeat(2, 1fr); }
-  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card { flex-basis: 85%; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   #kaine-photo { max-width: 300px; }
   .web-band { grid-template-columns: 1fr; gap: 34px; padding: 32px 26px; }
